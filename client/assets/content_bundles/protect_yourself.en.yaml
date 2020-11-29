@@ -1,0 +1,20 @@
+schema_version: 1
+content_version: 4
+contents:
+  type: fact
+  items:
+    - image_name: protect-hands
+      body_html: |
+        <b>Wash your hands</b> with soap and water to avoid getting sick and spreading infections to others.
+    - image_name: protect-face
+      body_html: |
+        <b>Avoid touching</b> your eyes, mouth, and nose.
+    - image_name: protect-cough
+      body_html: |
+        <b>Cover your mouth and nose</b> with your bent elbow or tissue when you cough or sneeze.
+    - image_name: protect-distance
+      body_html: |
+        <b>Distance at least 1 meter</b> (3 feet) with others and an even greater distance when indoors.
+    - image_name: protect-mask
+      body_html: |
+        <b>Wear masks when closer than 1 meter</b> (3 feet) in areas where the virus is spreading.

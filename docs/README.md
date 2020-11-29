@@ -1,10 +1,15 @@
-# World Health Organization COVID-19 App
+# COVID-19 App
 
-![iOS and Android App Builds](https://github.com/WorldHealthOrganization/app/workflows/Client%20Build/badge.svg)
-![Client Tests](https://github.com/WorldHealthOrganization/app/workflows/Client%20Tests/badge.svg)
-![Server Tests](https://github.com/WorldHealthOrganization/app/workflows/Server%20Tests/badge.svg)
+[![Client CI](https://github.com/WorldHealthOrganization/app/workflows/Client%20CI/badge.svg?event=push)](https://github.com/WorldHealthOrganization/app/actions?query=workflow%3A"Client+CI"+branch%3Amaster+event%3Apush)
+[![Server CI](https://github.com/WorldHealthOrganization/app/workflows/Server%20CI/badge.svg?event=push)](https://github.com/WorldHealthOrganization/app/actions?query=workflow%3A"Server+CI"+branch%3Amaster+event%3Apush)
 
-This is the official World Health Organization COVID-19 app.
+![Flutter](https://img.shields.io/badge/Framework-Flutter-3cc6fd?logo=flutter)
+![Dart](https://img.shields.io/badge/Language-Dart-0c458b?logo=dart)
+![Java](https://img.shields.io/badge/Language-Java-ed8217?logo=java)
+![App Engine](https://img.shields.io/badge/Cloud-App%20Engine-3469ee?logo=Google%20Cloud)
+![Firebase](https://img.shields.io/badge/Cloud-Firebase-f5ba23?logo=Firebase)
+
+COVID-19 app
 
 <!-- This is formatted strangely but automatically by Prettier. -->
 
@@ -17,3 +22,7 @@ This is the official World Health Organization COVID-19 app.
 | How do I build the app myself?                           | See the [development guide](ONBOARDING.md#development).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Who can I talk to about product, engineering, or design? | Reach out to our [functional leads](ONBOARDING.md#point-people).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | How does the app work?                                   | See our [engineering design documentation](devdesign/README.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+
+## Development Builds
+
+Please note that if you run the app from the GitHub repository, you are using a development-only build of this app not intended for public use. You agree that you have no expectation of privacy when using this build and understand that the content of the app may not have been reviewed by the World Health Organization.

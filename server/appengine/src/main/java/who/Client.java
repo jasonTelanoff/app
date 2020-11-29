@@ -1,47 +1,37 @@
 package who;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
 import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.condition.IfNotNull;
-
-import static com.googlecode.objectify.ObjectifyService.ofy;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Represents an app client.
  */
-@Entity @Cache public class Client {
+@Entity
+@Cache
+public class Client {
 
-  @Id String uuid;
+  @Id
+  String uuid;
 
   /** Device token for notifications. */
   public String token;
 
   public Platform platform;
 
+  @Index(IfNotNull.class)
+  public String isoCountryCode;
 
-  /** S2 cell ID for last known location. See S2CellId. */
-  @Index(IfNotNull.class) public Long location;
-  // No locations of greater level (specificity) than this will be
-  // stored and indexed.  This prevents us from storing precise
-  // locations and protects the database index size.
-  // See: https://s2geometry.io/resources/s2cell_statistics.html
-  public static final int MAX_S2_CELL_LEVEL = 9;
-
-  // Lat/lng representative of the cell, not neccessarily
-  // of the device.
-  public Double latitude;
-  public Double longitude;
-
-  // TODO: Store denormalized location info if/when needed.
-  public String countryCode;
-  public String adminArea1;
-  public String adminArea2;
-  public String adminArea3;
-  public String adminArea4;
-  public String adminArea5;
-  public String locality;
+  // No FCM API exists to list a token's topics, so we
+  // must track them explicitly and sub and unsub from
+  // the appropriate topics as the client changes.
+  public SortedSet<String> subscribedTopics = new TreeSet<>();
 
   public static Client getOrCreate(String uuid, Platform platform) {
     Client client = ofy().load().type(Client.class).id(uuid).now();

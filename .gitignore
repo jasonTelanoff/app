@@ -1,5 +1,6 @@
 # Temp files
 *~
+\#*#
 
 # Don't save away IntelliJ config, except code-style which all commits must follow.
 .idea/*
@@ -13,12 +14,16 @@ build
 DerivedData
 cache/
 out/
+staticContentBuild/
 
 # Android Studio
 # Intellij IDEA (see https://intellij-support.jetbrains.com/entries/23393067)
 # Note: Android Studio is a modified version of IntelliJ
 *.iws
 
+# Temporary personal files and directories
+*-gitignore.*
+*-gitignore
 
 # COCOAPODS
 Pods
@@ -72,6 +77,9 @@ project.xcworkspace
 .gradle
 *.iml
 
+# Flutter
+**/ios/Flutter/.last_build_id
+
 # node.js
 #
 node_modules/
@@ -96,3 +104,15 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+# Visual Studio
+
+.classpath
+.project
+.settings
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform
+server/terraform/generated

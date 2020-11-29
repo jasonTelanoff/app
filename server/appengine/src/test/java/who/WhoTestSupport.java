@@ -10,16 +10,19 @@ import org.junit.Before;
 public abstract class WhoTestSupport {
 
   protected final LocalServiceTestHelper helper = new LocalServiceTestHelper(
-      new LocalDatastoreServiceTestConfig().setApplyAllHighRepJobPolicy());
+    new LocalDatastoreServiceTestConfig().setApplyAllHighRepJobPolicy()
+  );
 
   private Closeable objectify;
 
-  @Before public void setup() {
+  @Before
+  public void setup() {
     helper.setUp();
     objectify = ObjectifyService.begin();
   }
 
-  @After public void tearDown() {
+  @After
+  public void tearDown() {
     objectify.close();
     helper.tearDown();
   }

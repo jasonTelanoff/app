@@ -4,14 +4,31 @@ _Note these instructions are for manual submission to the app stores, not for bu
 
 These instructions will assume that you have the up-to-date [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [Flutter](https://flutter.dev/docs/get-started/install), [Android Studio](https://developer.android.com/studio/index.html), [XCode](https://developer.apple.com/xcode/), and [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) already installed. You must use a macOS system to build the iOS app.
 
-- _Note: this was tested using CocoaPods version `1.9.1`_
+## Verify your tool versions
+
+Verify your tool versions by running and checking all of these values:
+
+```sh
+> flutter --version
+Flutter 1.22.1 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision fba99f6cf9 (8 days ago) • 2020-09-14 15:32:52 -0700
+Engine • revision d1bc06f032
+Tools • Dart 2.10.1
+
+> xcodebuild -version
+Xcode 12.0
+Build version 12A7209
+
+> pod --version
+1.10.0
+```
 
 ## Clone the Repo
 
 In order to ensure reproducibility, you will always build from a specified `TAG_NAME` (e.g. `v0.1.0`) and should not change bundle/application ids or version or build numbers that are stored in the git repository.
 
 ```
-git clone -b TAG_NAME https://github.com/WorldHealthOrganization/app.git
+git clone -b $TAG_NAME https://github.com/WorldHealthOrganization/app.git
 cd app
 ```
 
@@ -22,7 +39,7 @@ These instructions assume that an app record has already been added to the App S
 ### Install Flutter Dependencies
 
 ```
-cd $(git rev-parse --show-toplevel)/client/flutter
+cd client
 flutter pub get
 cd ios
 pod install
@@ -39,7 +56,8 @@ Follow Apple's instructions on [preparing for app distribution](https://help.app
 Prepare the Flutter release:
 
 ```
-cd $(git rev-parse --show-toplevel)/client/flutter
+DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
+cd client
 flutter build ios
 ```
 
@@ -71,11 +89,12 @@ Follow Flutter's [instructions for signing the app](https://flutter.dev/docs/dep
 Build the app bundle:
 
 ```
-cd $(git rev-parse --show-toplevel)/client/flutter
+DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
+cd client
 flutter build appbundle
 ```
 
-The release bundle for your app is created at `client/flutter/build/app/outputs/bundle/release/app.aab`.
+The release bundle for your app is created at `client/build/app/outputs/bundle/release/app.aab`.
 
 ### Upload the bundle to Google Play
 
